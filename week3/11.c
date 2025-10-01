@@ -10,9 +10,9 @@ int main()
     int h, m;
     scanf("%d%d", &h, &m);
     double h_degree = 30 * h + 0.5 * m;
-    while (h_degree >= 180)
+    while (h_degree >= 360)
     {
-        h_degree -= 180;
+        h_degree -= 360;
     }
     double m_degree = 6 * m;
     double d = abs(h_degree - m_degree);
