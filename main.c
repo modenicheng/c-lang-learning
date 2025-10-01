@@ -1,11 +1,13 @@
 #include <stdio.h>
-void main()
+#include <math.h>
+
+int main()
 {
-    int a = 3, b = 2, c = 4, d = 8, x;
-    a += b * c; // a = 11
-    b -= c / b; // b = 0
-    printf("%d,%d,%d,%d\n", a, b, c *= 2 * (a - c), d %= a);
-    x=5;
-    printf("x=%d\n", x += ++x);
-    printf("\\\065a,\n");
+    double a, b, c, d, x;
+    int r = scanf("(%lf,%lf) (%lf,%lf)", &a, &b, &c, &d);
+    printf("%.2lf %.2lf %.2lf %.2lf\n", a, b, c, d);
+    printf("r = %d\n", r);
+    x = sqrt((a - c) * (a - c) + (b - d) * (b - d));
+    printf("%.2lf\n", x);
+    return 0;
 }
