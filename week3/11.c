@@ -10,6 +10,10 @@ int main()
     int h, m;
     scanf("%d%d", &h, &m);
     double h_degree = 30 * h + 0.5 * m;
+    while (h_degree >= 180)
+    {
+        h_degree -= 180;
+    }
     double m_degree = 6 * m;
     double d = abs(h_degree - m_degree);
     printf("At %d:%.2d the angle is %.1f degrees.\n", h, m, d > 180 ? d - 180 : d);
