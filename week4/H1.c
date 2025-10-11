@@ -13,7 +13,7 @@ int main()
     }
 
     switch (m)
-    // fallthrough 合并
+    // fallthrough 合并天数相同的月份
     {
     case 1:
     case 3:
