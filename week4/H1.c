@@ -13,6 +13,7 @@ int main()
     }
 
     switch (m)
+    // fallthrough 合并
     {
     case 1:
     case 3:
