@@ -52,18 +52,30 @@
 
 # TARGET = "./week4/H1.c"
 
+# input_data = [
+#     "10+20\n",
+#     "30-20\n",
+#     "8*11\n",
+#     "13/5\n"
+# ]
+
+# expected_outputs = [
+#     "30\n",
+#     "10\n",
+#     "88\n",
+#     "2\n"
+# ]
+
+# TARGET = "./week5/19.c"
+
 input_data = [
-    "10+20\n",
-    "30-20\n",
-    "8*11\n",
-    "13/5\n"
+    "3000  3020\n6040  6090\n0 0\n",
+    "9  101\n87 -1\n0 0\n"
 ]
 
 expected_outputs = [
-    "30\n",
-    "10\n",
-    "88\n",
-    "2\n"
+    "3012  3014  3016  3018  \ncounter=4\n6042  6048  6052  6054  6058  6072  6074  6078  6082  6084  \ncounter=10\n",
+    "Error\nError\n"
 ]
 
-TARGET = "./week5/19.c"
+TARGET = "./week5/21.c"
