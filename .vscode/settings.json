@@ -1,0 +1,7 @@
+{
+    "files.associations": {
+        "*.scene": "webgal",
+        "*.typ": "typst",
+        "stdlib.h": "c"
+    }
+}
