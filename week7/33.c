@@ -40,6 +40,11 @@ int main(int argc, char const *argv[])
     int n;
     int day = 1;
     scanf("%d", &n);
+    if (n == 1)
+    {
+        printf("The monkey got 1 peach in first day.\n");
+        return 0;
+    }
     printf("The monkey got %d peaches in first day.\n", peaches(n, day));
     return 0;
 }
