@@ -68,14 +68,42 @@
 
 # TARGET = "./week5/19.c"
 
-input_data = [
-    "3000  3020\n6040  6090\n0 0\n",
-    "9  101\n87 -1\n0 0\n"
-]
+# input_data = [
+#     "3000  3020\n6040  6090\n0 0\n",
+#     "9  101\n87 -1\n0 0\n"
+# ]
 
-expected_outputs = [
-    "3012  3014  3016  3018  \ncounter=4\n6042  6048  6052  6054  6058  6072  6074  6078  6082  6084  \ncounter=10\n",
-    "Error\nError\n"
-]
+# expected_outputs = [
+#     "3012  3014  3016  3018  \ncounter=4\n6042  6048  6052  6054  6058  6072  6074  6078  6082  6084  \ncounter=10\n",
+#     "Error\nError\n"
+# ]
 
-TARGET = "./week5/21.c"
+# TARGET = "./week5/21.c"
+
+# input_data = [
+#     "DA H2 C3\nH4 H3 DJ\n",
+#     "HA CA CB\nHQ CJ CQ\n",
+#     "HA CA CJ\nDA DK DK\n",
+#     "SA SJ SK\nSA SJ SK\n"
+# ]
+
+# expected_outputs = [
+#     "Winner is B!\nA: H2 DA C3\nB: H4 H3 DJ\n",
+#     "Input Error!\n",
+#     "Input Error!\n",
+#     "Winner is X!\nA: SA SK SJ\nB: SA SK SJ\n"
+# ]
+
+# TARGET = "./week7/35.c"
+
+# from random import randint
+
+# n = 10000
+
+# input_data = [f'1\n{n}\n' + ' '.join([str(randint(-1000, 1000)) for _ in range(n)]) + '\n']
+# expected_outputs = ['']
+
+
+input_data =['2\n5\n6 -1 5 4 -7\n7\n0 6 -1 1 -6 7 -5\n']
+expected_outputs = ['14\n7\n']
+TARGET = "mooc/week6/4.c"

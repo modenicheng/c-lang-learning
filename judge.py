@@ -76,13 +76,21 @@ console.log(
 console.log(f"Loaded {len(input_data)} test cases.")
 
 results: list[subprocess.CompletedProcess] = []
+execution_times = []  # 添加一个列表来存储每个测试用例的执行时间
 
 for idx, inp in enumerate(input_data):
     console.log(f"[blue]Running test case {idx + 1}...[/blue]")
     # Ensure input is a string
     input_str = str(inp)
+    
+    # 添加子进程执行计时
+    start_time = time.perf_counter_ns()
     result: subprocess.CompletedProcess[str] = subprocess.run(
-        [output_file], input=input_str, capture_output=True, text=True, timeout=5)
+        [output_file], input=input_str, capture_output=True, text=True, timeout=None)
+    end_time = time.perf_counter_ns()
+    execution_time = end_time - start_time
+    execution_times.append(execution_time)
+    
     results.append(result)
     if result.returncode != 0:
         console.log(
@@ -91,16 +99,14 @@ for idx, inp in enumerate(input_data):
 
     expected_output = expected_outputs[idx]
     if result.stdout == expected_output:
-        console.log(f"[green]Test case {idx + 1} passed![/green]")
+        console.log(f"[green]Test case {idx + 1} passed! (Took {readable_perf_time(execution_time)})[/green]")
     else:
-        console.log(f"[red]Test case {idx + 1} failed![/red]")
+        console.log(f"[red]Test case {idx + 1} failed! (Took {readable_perf_time(execution_time)})[/red]")
         console.log(f"[yellow]Input:[/yellow]\n{handle_newline(str(inp))}")
         console.log(
-            f"[yellow]Expected Output:[/yellow]\n{handle_newline(expected_output)}"
-        )
+            f"[yellow]Expected Output:[/yellow]\n{handle_newline(expected_output)}")
         console.log(
-            f"[yellow]Actual Output:[/yellow]\n{handle_newline(result.stdout)}"
-        )
+            f"[yellow]Actual Output:[/yellow]\n{handle_newline(result.stdout)}")
 
 # Summary Table
 results_table = Table(expand=True,
@@ -112,6 +118,8 @@ results_table.add_column("Input")
 results_table.add_column("Expected Output")
 results_table.add_column("Actual Output")
 results_table.add_column("Exit Code", width=4)
+results_table.add_column("Time", width=12)  # 添加时间列
+
 summary = {"passed": 0, "failed": 0, "error": 0}
 for idx, result in enumerate(results):
     is_passed = result and result.stdout == expected_outputs[idx]
@@ -127,6 +135,7 @@ for idx, result in enumerate(results):
                           handle_newline(expected_outputs[idx]),
                           handle_newline(result.stdout if result else "N/A"),
                           str(result.returncode if result else "N/A"),
+                          readable_perf_time(execution_times[idx]) if idx < len(execution_times) else "N/A",  # 显示执行时间
                           style=row_style)
     results_table.add_section()
 results_table.caption_justify = "left"
