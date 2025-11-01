@@ -45,33 +45,100 @@ B: SA SK SJ
 */
 
 #include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
 
 char rank[15] = {'2', '3', '4', '5', '6', '7', '8', '9', '1', 'J', 'Q', 'K', 'A'};
 char suit[4] = {'C', 'D', 'S', 'H'};
 
 typedef struct
 {
-    int rank; // 2-10, J, Q, K, A
-    int suit; // Heart, Spade, Diamond, Club
+    int rank; // 2-10, J = 11, Q = 12, K = 13, A = 14
+    int suit; // Heart = 45, Spade = 30, Diamond = 15, Club = 0
+    // 类似进位制，保证 rank + suit 不会重复。（如果 suit 从 1-4, 会出现 CA = DK 的情况，无法排序）
 } Card;
 
+int weight(Card card)
+{
+    return card.rank + card.suit;
+}
 
 void print_card(Card card)
 {
-    printf("%c%c", rank[card.rank - 2], suit[card.suit]);
+    if (card.rank == 10)
+    {
+        printf("%c10", suit[(card.suit / 15)]);
+        return;
+    }
+    printf("%c%c", suit[(card.suit / 15)], rank[card.rank - 2]);
 }
 
-Card sort_cards(Card cards[3])
+void sort_cards(Card cards[3])
 {
     for (int i = 0; i < 3; i++)
     {
         for (int j = 0; j < 3 - i - 1; j++)
         {
-            if (cards[j].rank > cards[j + 1].rank)
+            if (weight(cards[j]) < weight(cards[j + 1]))
             {
-                Card temp = cards[j];
+                Card tmp = cards[j];
                 cards[j] = cards[j + 1];
-                cards[j + 1] = temp;
+                cards[j + 1] = tmp;
+            }
+        }
+    }
+}
+
+Card get_card()
+{
+    Card card;
+
+    int rank = 0;
+    int suit;
+    while (1)
+    {
+        char c = getchar();
+        if (c == ' ' || c == '\n')
+        {
+            card = (Card){rank, suit};
+            return card;
+        }
+        else if (c >= '0' && c <= '9')
+        {
+            rank *= 10;
+            rank += c - 48;
+        }
+        else if (c >= 'A' && c <= 'Z')
+        {
+            switch (c)
+            {
+            case 'A':
+                rank = 14;
+                break;
+            case 'K':
+                rank = 13;
+                break;
+            case 'Q':
+                rank = 12;
+                break;
+            case 'J':
+                rank = 11;
+                break;
+            case 'H':
+                suit = 45;
+                break;
+            case 'S':
+                suit = 30;
+                break;
+            case 'D':
+                suit = 15;
+                break;
+            case 'C':
+                suit = 0;
+                break;
+            default:
+                printf("Input Error!\n");
+                exit(1);
             }
         }
     }
@@ -80,5 +147,74 @@ Card sort_cards(Card cards[3])
 int main(int argc, char const *argv[])
 {
     Card A[3], B[3];
+
+    for (int i = 0; i < 3; i++)
+    {
+        A[i] = get_card();
+    }
+    for (int i = 0; i < 3; i++)
+    {
+        B[i] = get_card();
+    }
+
+    // validation 检查牌是否唯一
+    for (int i = 0; i < 3; i++)
+    {
+        for (int j = i + 1; j < 3; j++)
+        {
+            if (weight(A[i]) == weight(A[j]) ||
+                weight(B[i]) == weight(B[j]))
+            {
+                printf("Input Error!\n");
+                exit(1);
+            }
+        }
+    }
+    sort_cards(A);
+    sort_cards(B);
+
+    char winner = 'X';
+    for (int i = 0; i < 3; i++)
+    {
+        if (weight(A[i]) > weight(B[i]))
+        {
+            winner = 'A';
+            break;
+        }
+        else if (weight(A[i]) < weight(B[i]))
+        {
+            winner = 'B';
+            break;
+        }
+    }
+
+    printf("Winner is %c!\n", winner);
+    printf("A: ");
+    for (int i = 0; i < 3; i++)
+    {
+        print_card(A[i]);
+        if (i != 2)
+        {
+            printf(" ");
+        }
+        else
+        {
+            printf("\n");
+        }
+    }
+
+    printf("B: ");
+    for (int i = 0; i < 3; i++)
+    {
+        print_card(B[i]);
+        if (i != 2)
+        {
+            printf(" ");
+        }
+        else
+        {
+            printf("\n");
+        }
+    }
     return 0;
 }

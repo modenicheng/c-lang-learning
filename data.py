@@ -80,21 +80,24 @@
 
 # TARGET = "./week5/21.c"
 
-# input_data = [
-#     "DA H2 C3\nH4 H3 DJ\n",
-#     "HA CA CB\nHQ CJ CQ\n",
-#     "HA CA CJ\nDA DK DK\n",
-#     "SA SJ SK\nSA SJ SK\n"
-# ]
+input_data = [
+    "DA H2 C3\nH4 H3 DJ\n",
+    "HA CA CB\nHQ CJ CQ\n",
+    "HA CA CJ\nDA DK DK\n",
+    "SA SJ SK\nSA SJ SK\n",
+    "S10 SJ SK\nSA SJ SK\n"
+    
+]
 
-# expected_outputs = [
-#     "Winner is B!\nA: H2 DA C3\nB: H4 H3 DJ\n",
-#     "Input Error!\n",
-#     "Input Error!\n",
-#     "Winner is X!\nA: SA SK SJ\nB: SA SK SJ\n"
-# ]
+expected_outputs = [
+    "Winner is B!\nA: H2 DA C3\nB: H4 H3 DJ\n",
+    "Input Error!\n",
+    "Input Error!\n",
+    "Winner is X!\nA: SA SK SJ\nB: SA SK SJ\n",
+    "Winner is B!\nA: SK SJ S10\nB: SA SK SJ\n"
+]
 
-# TARGET = "./week7/35.c"
+TARGET = "./week7/35.c"
 
 # from random import randint
 
@@ -104,6 +107,6 @@
 # expected_outputs = ['']
 
 
-input_data =['2\n5\n6 -1 5 4 -7\n7\n0 6 -1 1 -6 7 -5\n']
-expected_outputs = ['14\n7\n']
-TARGET = "mooc/week6/4.c"
+# input_data =['2\n5\n6 -1 5 4 -7\n7\n0 6 -1 1 -6 7 -5\n']
+# expected_outputs = ['14\n7\n']
+# TARGET = "mooc/week6/4.c"
