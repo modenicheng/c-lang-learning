@@ -19,8 +19,11 @@
 
 int main(int argc, char const *argv[])
 {
-    char str[1024];
-    char str1[1024], str2[1024];
+    char str[2048];
+
+    // 这两个字符串变量需要给一个空的初始值，不然会导致输出有概率多一些奇怪的字符
+    // 主要原因是，没有初始赋一个初值，会使得这块内存数据可能不全为 0 。
+    char str1[1024] = "", str2[1024] = "";
     int read_ptr1 = 0, read_ptr2 = 0, write_ptr = 0;
 
     char *ptr1 = str1;
