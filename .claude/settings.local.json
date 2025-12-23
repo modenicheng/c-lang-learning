@@ -1,0 +1,12 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(gcc:*)",
+      "Bash(./test.exe:*)",
+      "Bash(./63_new.exe:*)",
+      "Bash(./63_fixed.exe:*)",
+      "Bash(./66.exe)",
+      "Bash(./h22_test:*)"
+    ]
+  }
+}

@@ -42,7 +42,6 @@ The longest equal number list is from 4 to 9.↵
 The longest equal number list is from 1 to 3.↵
 */
 #include <stdio.h>
-#include <string.h>
 
 int main() {
   int n;
