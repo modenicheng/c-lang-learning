@@ -3,5 +3,6 @@
         "*.scene": "webgal",
         "*.typ": "typst",
         "stdlib.h": "c"
-    }
+    },
+    "editor.tabSize": 2
 }

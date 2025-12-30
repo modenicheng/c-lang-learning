@@ -9,7 +9,12 @@
       "Bash(./h22_test:*)",
       "Bash(./week13/69.exe:*)",
       "Bash(printf:*)",
-      "Bash(week13/71_linked.exe)"
+      "Bash(week13/71_linked.exe)",
+      "Bash(cat:*)",
+      "Bash(./test_start0.exe:*)",
+      "Bash(./debug-3.exe:*)",
+      "Bash(./debug-2.exe:*)",
+      "Bash(python:*)"
     ]
   }
 }
