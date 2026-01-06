@@ -14,7 +14,8 @@
       "Bash(./test_start0.exe:*)",
       "Bash(./debug-3.exe:*)",
       "Bash(./debug-2.exe:*)",
-      "Bash(python:*)"
+      "Bash(python:*)",
+      "Bash(mooc2/week5/test1.exe)"
     ]
   }
 }
