@@ -104,13 +104,16 @@ void deleteneg( PNODE head )
 
 void deleteneg(PNODE head) {
   PNODE p = head->next;
-  while (p->next != NULL) {
-    if (p->next->data < 0) {
-      PNODE poped = p->next;
-      p->next = p->next->next;
+  PNODE prev = head;
+  while (p != NULL) {
+    if (p->data < 0) {
+      PNODE poped = p;
+      prev->next = p->next;
       free(poped);
+      p = prev->next;
       continue;
     }
-    p = p-> next;
+    prev = prev->next;
+    p = p->next;
   }
 }
