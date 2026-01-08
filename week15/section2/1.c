@@ -42,3 +42,36 @@ O Q S↵
 P R T↵
 QRSTU↵
 */
+#include <stdio.h>
+
+int main() {
+  int n;
+  char c;
+  scanf("%d %c", &n, &c);
+  if (n % 2 == 0) {
+    puts("input error!");
+    return 1;
+  }
+  if (!((c >= 'A' && c <= 'Z') || (c >= 'a' && c <= 'z'))) {
+    puts("input error!");
+    return 1;
+  }
+  if (c >= 'a' && c <= 'z') {
+    c = c - 'a' + 'A';
+  }
+
+  // 输出图形
+  for (int i = 0; i < n; i++) {
+    for (int j = 0; j < n; j++) {
+      if (i == 0 || i == n - 1 || j == 0 || j == n - 1 || j == n / 2) {
+        int offset = i + j;
+        char ch = (c - 'A' + offset) % 26 + 'A';
+        printf("%c", ch);
+      } else {
+        printf(" ");
+      }
+    }
+    printf("\n");
+  }
+  return 0;
+}

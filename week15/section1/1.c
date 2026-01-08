@@ -30,7 +30,7 @@ long findf(int n);
 */
 #include <stdio.h>
 
-long find(int n) {
+int find(int n) {
   if (n <= 0) {
     return 1;
   }
