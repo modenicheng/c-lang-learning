@@ -19,11 +19,13 @@ cdefgh
 int main() {
   char inp[4096] = "";
   fgets(inp, 4096, stdin);
+  int len = strlen(inp);
+  if (len > 0 && inp[len-1] == '\n') inp[--len] = '\0';
   int in_str = 0;
-  char sub_str[1024] = "";
+  char sub_str[4096] = "";
   int sub_idx = 0;
 
-  for (int i = 0; i < strlen(inp) - 1; i++) {
+  for (int i = 0; i < len - 1; i++) {
     if (inp[i] == inp[i + 1] - 1) {
       in_str = 1;
       sub_str[sub_idx++] = inp[i];
@@ -34,6 +36,11 @@ int main() {
       sub_idx = 0;
       puts(sub_str);
     }
+  }
+  if (in_str == 1 && len > 0) {
+    sub_str[sub_idx++] = inp[len-1];
+    sub_str[sub_idx] = '\0';
+    puts(sub_str);
   }
   return 0;
 }
