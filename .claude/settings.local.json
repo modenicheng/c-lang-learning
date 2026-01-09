@@ -19,7 +19,8 @@
       "Bash(./2.exe:*)",
       "Bash(./5.exe:*)",
       "Bash(./1.exe:*)",
-      "Bash(./3.exe:*)"
+      "Bash(./3.exe:*)",
+      "Bash(./test1.exe:*)"
     ]
   }
 }
